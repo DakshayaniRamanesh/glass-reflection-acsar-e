@@ -1,0 +1,4 @@
+point_id,scene_id,sensor,scan_timestamp_s,x_sensor,y_sensor,z_sensor,range_m,intensity,ring_id,return_idx,gt_surface_class,gt_confidence,annotator_id,verification_method,remarks
+PT_000001,SCENE_05_GLASS_APPROACH,hesai,1790853035.120,2.415,-0.320,0.115,2.439,8.0,7,1,glass_front,5,M4_LEAD,physical_survey,Measured with Leica DISTO at 2.44m from robot front bumper.
+PT_000002,SCENE_05_GLASS_APPROACH,hesai,1790853035.120,4.820,-0.640,0.230,4.868,3.0,7,2,transmitted,4,M4_LEAD,camera_reprojection,Point penetrates glass pane; corresponds to interior office chair backrest.
+PT_000003,SCENE_05_GLASS_APPROACH,hesai,1790853035.120,3.850,1.200,-0.150,4.035,2.0,5,1,multipath_ghost,4,M4_LEAD,multi_frame_cad,Specular reflection via floor bounce into glass.

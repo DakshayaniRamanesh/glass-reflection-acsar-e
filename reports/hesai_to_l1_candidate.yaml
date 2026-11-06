@@ -1,0 +1,28 @@
+calibration_status: PRELIMINARY
+child_frame: hesai_lidar
+geometric_degeneracy_notes: Indoor corridor geometry lacks orthogonal vertical planes
+  along corridor axis. Translation along the corridor corridor heading exhibits weak
+  observability. Residual is ~4.5-5.5 cm in cross-track/vertical but unconstrained
+  along along-track axis.
+inlier_ratio: 0.07682399647110719
+parent_frame: utlidar_lidar
+residual_rmse_m: 0.07203142101739612
+transform:
+  euler_rpy_deg:
+  - 2.4187950894062467
+  - -23.14564766620786
+  - -90.11304240632887
+  rotation_matrix:
+  - - -0.0018141545779349053
+    - 0.9991398242740731
+    - -0.04142849735076321
+  - - -0.9195068400105746
+    - 0.014617647267066757
+    - 0.3928021073799661
+  - - 0.3930698157031831
+    - 0.038806390426712724
+    - 0.9186893838752656
+  translation:
+    x: -0.1681211172605453
+    y: -0.06633676466704425
+    z: 0.0572235199635579

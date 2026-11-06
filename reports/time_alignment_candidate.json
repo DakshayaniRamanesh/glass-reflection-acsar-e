@@ -1,0 +1,29 @@
+{
+  "temporal_alignment_status": "VALIDATED_WITH_BOUNDS",
+  "primary_reference_clock": "unitree_onboard_rtc",
+  "clock_domains": {
+    "unitree_rtc": {
+      "description": "Hardware RTC shared by L1 LiDAR, utlidar/imu, and Go2 lowstate",
+      "base_epoch_sec": 1790852964.3202586,
+      "internal_jitter_ms": 2.25
+    },
+    "host_pc_ros": {
+      "description": "Host PC clock recorded in ROS2 bag receipt timestamps",
+      "mean_offset_to_unitree_rtc_sec": 608.7713946577429,
+      "linear_drift_rate_ppm": -1906.1369634573784,
+      "transport_jitter_std_ms": 120.76837158661314
+    },
+    "hesai_hardware": {
+      "description": "Internal Hesai hardware timestamp (use_timestamp_type: 1 in driver)",
+      "base_epoch_sec": 3307199.131274,
+      "offset_to_host_pc_sec": 1787546374.0638072,
+      "offset_to_unitree_rtc_sec": 1787545765.2924125,
+      "conversion_formula": "t_rtc = t_hesai_pt + 1787545765.292413 - (-1.906137e-03 * (t - t0))"
+    }
+  },
+  "uncertainty_bounds": {
+    "kinematic_phase_uncertainty_ms": 5915.0,
+    "hesai_to_rtc_residual_std_ms": 124.05419796025015,
+    "per_point_timestamp_resolution_us": 1.0
+  }
+}
