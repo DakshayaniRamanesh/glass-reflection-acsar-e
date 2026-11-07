@@ -1,15 +1,21 @@
-# ACSAR-E M1 -> M4 Handoff Package: Independent Ground-Truth Protocol
+# ACSAR-E M1 -> M4 Handoff: Ground-Truth Protocol & Evaluation
 
-## Status:
-- **Visual Grounding & Scene Inventory:** **READY**
-  - 6 representative benchmark scene epochs extracted from `rosbag2_2026_10_01-16_49_33`.
-  - Color camera intrinsics and 1280x720 RGB candidate images extracted.
-- **Physical Ground-Truth Survey Requirements:** **DOCUMENTED**
-  - Standardized taxonomy of 8 surface classes.
-  - Required physical measurements specified (wall-to-wall corridor width, glass CAD planes, Leica DISTO fiducials).
+## Milestone Status:
+- **Protocol Development:** **READY for developing the ground-truth protocol.**
+- **Accuracy Benchmarking:** **NOT READY for classification accuracy measurements.**
 
-## Included Artifacts:
-1. `scene_inventory.csv`: Index of benchmark scenes with robot motion state and glass presence.
-2. `annotation_template.csv`: Standardized tabular schema for point-level ground-truth labeling.
-3. `ground_truth_requirements.md`: Experimental protocol and survey requirements for M4.
-4. `candidate_scenes/`: 6 high-resolution camera images corresponding to the benchmark epochs.
+## What is READY for M4:
+1. **Scene Inventory & Imagery:**
+   - `scene_inventory.csv`: 6 benchmark candidate scene epochs isolated. All surface classes explicitly designated **UNKNOWN / UNVERIFIED**.
+   - 6 candidate RGB images in `candidate_scenes/`.
+   - Camera intrinsics documented ($1280 \times 720$ RGB8, $f_x=911.99, f_y=911.48$).
+2. **Standardized Annotation Framework:**
+   - `annotation_template.csv`: Standardized tabular schema (point coordinates, sensor type, return index, surface class, confidence score, verification method). Intentionally blank with no fabricated measurements.
+   - `ground_truth_requirements.md`: Comprehensive survey requirements protocol (corridor tape survey, CAD boundaries, optical fiducials).
+
+## Why M4 is NOT READY for Accuracy Measurements:
+1. **Downward Camera Angle:**
+   - The onboard camera points downwards, predominantly imaging the floor and lower skirting boards. Transparent glass panels are not confirmed from the visual imagery.
+2. **Lack of Physical Survey Data:**
+   - No architectural CAD or surveyed glass coordinates exist for the recorded bag sessions.
+   - M4 must execute a controlled recording session with known glass targets before quantitative classifier accuracy (precision/recall/ROC) can be evaluated.

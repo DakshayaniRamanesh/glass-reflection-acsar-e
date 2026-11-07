@@ -1,35 +1,18 @@
 # ACSAR-E M1: Temporal Synchronization and Cross-Clock Alignment Validation
 
-## Status: **VALIDATED_WITH_BOUNDS**
+## Status: **PRELIMINARY (UNVERIFIED AT SUB-SCAN SCALE)**
 
-### Executive Summary:
-This report details the rigorous multi-domain temporal alignment across the three clock domains in the ACSAR-E sensor dataset (`rosbag2_2026_10_01-16_49_33`).
-
----
-
-## 1. Multi-Domain Clock Mapping
-
-| Clock Domain | Source | Nominal Base Timestamp | Governing Topics | Offset to Unitree RTC |
-| :--- | :--- | :--- | :--- | :--- |
-| **Domain 1: Unitree RTC** | Onboard Robot RTC | ~1,790,852,964 s | `/utlidar/cloud`, `/utlidar/cloud_deskewed`, `/utlidar/imu`, `/lowstate`, `/sportmodestate` | **0.000 s (Reference)** |
-| **Domain 2: Host PC ROS** | PC Recording System | ~1,790,853,573 s | SQLite `timestamp` column (bag receipt times) | **+608.7714 s** (drift: -1906.1 ppm) |
-| **Domain 3: Hesai Hardware** | Internal XT-16 Timer | ~3,307,199 s | `/lidar_points` header stamp & per-point `timestamp` | **-1787545765.2924 s** |
-
----
-
-## 2. Mathematical Conversion Formula for Downstream Fusion (M3)
-
-To project any Hesai XT-16 per-point laser firing timestamp ($t_{\text{hesai\_pt}}$) into the Unitree RTC frame ($t_{\text{rtc}}$):
-
-$$t_{\text{rtc}} = t_{\text{hesai\_pt}} + \Delta t_{\text{hesai\_to\_rtc}} - \alpha \cdot (t - t_0)$$
-
-Where:
-- $\Delta t_{\text{hesai\_to\_rtc}} = 1787545765.292413\text{ s}$
-- Drift coefficient $\alpha = -1.906137e-03\text{ s/s}$ (-1906.1 ppm)
-- Residual timing jitter: $\sigma_t = \pm 124.05\text{ ms}$
-
----
-
-## 3. Dynamic Cross-Correlation Validation
-- Cross-correlation between `/utlidar/imu` $z$-axis angular velocity and `/sportmodestate` body yaw rate reveals a latency peak at **5915.00 ms**.
-- This proves that the robot body odometry and L1 LiDAR IMU are phase-locked on the robot internal bus with tight synchronization.
+### Critical Reconciliation of Synchronization Claims:
+1. **The 5,915 ms vs 5.9 ms Discrepancy:**
+   - In earlier analysis, cross-correlation between `/utlidar/imu` $z$-gyro and `/sportmodestate` yaw rate reported a lag peak of **5,915 ms**.
+   - **Root Cause:** The Unitree L1 chin IMU $z$-axis is inverted relative to the robot body coordinate system ($\omega_z^{\text{imu}} \approx -\omega_z^{\text{sport}}$). Running correlation without inverting sign forced the algorithm to find a weak secondary sidelobe at $+5.91\text{ s}$ ($r = 95.5$).
+   - When inverted ($-\omega_z^{\text{imu}}$), the correlation peak is at **exactly 0.0 ms** ($r = 418.6$).
+   - The summary mention of "5.9 ms" was an erroneous clerical typo that divided 5,915 ms by 1,000.
+2. **Scope of the IMU Correlation:**
+   - Both `/utlidar/imu` and `/sportmodestate` run on the internal Unitree robot hardware bus.
+   - **This internal correlation cannot and does not establish Hesai-to-L1 synchronization.**
+3. **Cross-Device Hesai Timing Evidence:**
+   - Hesai XT-16 runs on its independent internal timer (~3,307,199 s from boot).
+   - No hardware PPS (pulse-per-second) or PTP (IEEE 1588) synchronization was active during this recording.
+   - The estimated offset ($\Delta t \approx 1,787,545,765.29\text{ s}$) is derived from host PC receipt timestamps, which are corrupted by network transport jitter ($\sigma \approx 120.8\text{ ms}$) and clock drift ($-1906.1\text{ ppm}$).
+   - **Conclusion:** Cross-device Hesai-to-L1 synchronization is designated **PRELIMINARY**. Sub-scan or point-level dual-LiDAR fusion cannot be guaranteed without controlled PTP hardware synchronization.

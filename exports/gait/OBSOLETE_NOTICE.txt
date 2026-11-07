@@ -1,0 +1,5 @@
+NOTICE: The previous files in this directory (lowstate_leg_actuators.npz, sportmode_state.npz) 
+were decoded using preliminary hard-coded CDR offsets that produced unpopulated/zero data.
+They have been removed and replaced by the authoritative full-rate validated exports located at:
+  - exports/sportmode_validated.npz (23,785 messages, 268.7 Hz)
+  - exports/lowstate_validated.npz (40,015 messages, 451.6 Hz)

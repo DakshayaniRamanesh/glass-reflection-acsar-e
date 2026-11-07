@@ -1,18 +1,19 @@
-# ACSAR-E M1 -> M2 Handoff Package: Reflection & Glass Detection
+# ACSAR-E M1 -> M2 Handoff: Reflection & Glass Detection
 
-## Status:
-- **Single-Sensor Reflection Features (Hesai):** **READY**
-  - Native float64 timestamps and uint16 ring channels preserved.
-  - Zero-coordinate laser dropouts masked out via boolean `valid_mask`.
-  - Dual-return divergence analysis verified: 0.65% (stationary) to 3.58% (glass partitions).
-- **Dual-Sensor Spatial Consistency (L1 vs Hesai):** **PRELIMINARY**
-  - Extrinsic calibration residual is 7.20 cm (corridor geometric degeneracy).
+## Milestone Status:
+- **Status:** **READY for separate single-sensor feature development.**
+- **Dual-Sensor Spatial Consistency:** **PRELIMINARY (NOT RESEARCH-READY)**.
 
-## Included Artifacts:
-1. `hesai_repetition_analysis.md`: Rigorous 4-way classification of dual-return returns.
-2. `scan_index.csv`: Master index of all 18 representative scans (stationary, trot, turning).
-3. Representative multi-epoch scans located at: `acsar_e_m1/exports/hesai/` and `acsar_e_m1/exports/l1_raw/`.
+## What is READY for M2:
+1. **Hesai XT-16 Single-Sensor Feature Development:**
+   - 18 representative scans exported in `exports/hesai/` preserving native `float64` per-point timestamps and `uint16` ring IDs.
+   - Zero-coordinate laser dropouts masked via boolean `valid_mask`.
+   - Hesai dual-return pairing structure verified (Return 1 in [0..15], Return 2 in [16..31] per 32-point block).
+   - Recalculated dual-return divergence: 0.65% (stationary), 3.40%–3.58% (mid-corridor), 2.60%–2.65% (late-corridor).
+2. **Unitree L1 Single-Sensor Feature Development:**
+   - 18 representative scans exported in `exports/l1_raw/` and `exports/l1_deskewed/`.
+   - Point field layout and data integrity validated 100% against official ROS2 PointCloud2 deserializer.
 
-## Critical Usage Instructions for M2:
-- Do not interpret dual-return divergence alone as definitive glass without cross-referencing surface normal and camera reprojection.
-- Use `valid_mask` to filter out zero-coordinate packets before computing spatial features.
+## Usage Constraints & Caveats:
+- **Do not assume dual-return divergence equals confirmed glass.** Edge scattering, specular floor reflections, and window frames also produce dual returns.
+- **Do not rely on sub-decimeter L1-Hesai spatial alignment** until multi-planar target calibration is completed.

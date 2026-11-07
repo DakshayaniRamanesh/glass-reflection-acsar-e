@@ -1,0 +1,365 @@
+{
+  "status": "PASS",
+  "checked_lidar_scans": 18,
+  "lidar": [
+    {
+      "topic": "/utlidar/cloud",
+      "bag_msg_index": 0,
+      "file": "/mnt/d/glass-research/acsar_e_m1/exports/l1_raw/scan_0000_early.npz",
+      "pass": true,
+      "raw_point_bytes_match": false,
+      "tests": {
+        "bag_timestamp": true,
+        "header_timestamp": true,
+        "frame": true,
+        "dimensions": true,
+        "point_step": true,
+        "is_dense": true,
+        "row_layout": true,
+        "field_descriptors": true,
+        "named_fields": true,
+        "valid_mask": true
+      }
+    },
+    {
+      "topic": "/utlidar/cloud",
+      "bag_msg_index": 1,
+      "file": "/mnt/d/glass-research/acsar_e_m1/exports/l1_raw/scan_0001_early.npz",
+      "pass": true,
+      "raw_point_bytes_match": false,
+      "tests": {
+        "bag_timestamp": true,
+        "header_timestamp": true,
+        "frame": true,
+        "dimensions": true,
+        "point_step": true,
+        "is_dense": true,
+        "row_layout": true,
+        "field_descriptors": true,
+        "named_fields": true,
+        "valid_mask": true
+      }
+    },
+    {
+      "topic": "/utlidar/cloud",
+      "bag_msg_index": 617,
+      "file": "/mnt/d/glass-research/acsar_e_m1/exports/l1_raw/scan_0617_mid_steady.npz",
+      "pass": true,
+      "raw_point_bytes_match": false,
+      "tests": {
+        "bag_timestamp": true,
+        "header_timestamp": true,
+        "frame": true,
+        "dimensions": true,
+        "point_step": true,
+        "is_dense": true,
+        "row_layout": true,
+        "field_descriptors": true,
+        "named_fields": true,
+        "valid_mask": true
+      }
+    },
+    {
+      "topic": "/utlidar/cloud",
+      "bag_msg_index": 618,
+      "file": "/mnt/d/glass-research/acsar_e_m1/exports/l1_raw/scan_0618_mid_steady.npz",
+      "pass": true,
+      "raw_point_bytes_match": false,
+      "tests": {
+        "bag_timestamp": true,
+        "header_timestamp": true,
+        "frame": true,
+        "dimensions": true,
+        "point_step": true,
+        "is_dense": true,
+        "row_layout": true,
+        "field_descriptors": true,
+        "named_fields": true,
+        "valid_mask": true
+      }
+    },
+    {
+      "topic": "/utlidar/cloud",
+      "bag_msg_index": 1232,
+      "file": "/mnt/d/glass-research/acsar_e_m1/exports/l1_raw/scan_1232_late_steady.npz",
+      "pass": true,
+      "raw_point_bytes_match": false,
+      "tests": {
+        "bag_timestamp": true,
+        "header_timestamp": true,
+        "frame": true,
+        "dimensions": true,
+        "point_step": true,
+        "is_dense": true,
+        "row_layout": true,
+        "field_descriptors": true,
+        "named_fields": true,
+        "valid_mask": true
+      }
+    },
+    {
+      "topic": "/utlidar/cloud",
+      "bag_msg_index": 1233,
+      "file": "/mnt/d/glass-research/acsar_e_m1/exports/l1_raw/scan_1233_late_steady.npz",
+      "pass": true,
+      "raw_point_bytes_match": false,
+      "tests": {
+        "bag_timestamp": true,
+        "header_timestamp": true,
+        "frame": true,
+        "dimensions": true,
+        "point_step": true,
+        "is_dense": true,
+        "row_layout": true,
+        "field_descriptors": true,
+        "named_fields": true,
+        "valid_mask": true
+      }
+    },
+    {
+      "topic": "/utlidar/cloud_deskewed",
+      "bag_msg_index": 0,
+      "file": "/mnt/d/glass-research/acsar_e_m1/exports/l1_deskewed/scan_0000_early.npz",
+      "pass": true,
+      "raw_point_bytes_match": false,
+      "tests": {
+        "bag_timestamp": true,
+        "header_timestamp": true,
+        "frame": true,
+        "dimensions": true,
+        "point_step": true,
+        "is_dense": true,
+        "row_layout": true,
+        "field_descriptors": true,
+        "named_fields": true,
+        "valid_mask": true
+      }
+    },
+    {
+      "topic": "/utlidar/cloud_deskewed",
+      "bag_msg_index": 1,
+      "file": "/mnt/d/glass-research/acsar_e_m1/exports/l1_deskewed/scan_0001_early.npz",
+      "pass": true,
+      "raw_point_bytes_match": false,
+      "tests": {
+        "bag_timestamp": true,
+        "header_timestamp": true,
+        "frame": true,
+        "dimensions": true,
+        "point_step": true,
+        "is_dense": true,
+        "row_layout": true,
+        "field_descriptors": true,
+        "named_fields": true,
+        "valid_mask": true
+      }
+    },
+    {
+      "topic": "/utlidar/cloud_deskewed",
+      "bag_msg_index": 616,
+      "file": "/mnt/d/glass-research/acsar_e_m1/exports/l1_deskewed/scan_0616_mid_steady.npz",
+      "pass": true,
+      "raw_point_bytes_match": false,
+      "tests": {
+        "bag_timestamp": true,
+        "header_timestamp": true,
+        "frame": true,
+        "dimensions": true,
+        "point_step": true,
+        "is_dense": true,
+        "row_layout": true,
+        "field_descriptors": true,
+        "named_fields": true,
+        "valid_mask": true
+      }
+    },
+    {
+      "topic": "/utlidar/cloud_deskewed",
+      "bag_msg_index": 617,
+      "file": "/mnt/d/glass-research/acsar_e_m1/exports/l1_deskewed/scan_0617_mid_steady.npz",
+      "pass": true,
+      "raw_point_bytes_match": true,
+      "tests": {
+        "bag_timestamp": true,
+        "header_timestamp": true,
+        "frame": true,
+        "dimensions": true,
+        "point_step": true,
+        "is_dense": true,
+        "row_layout": true,
+        "field_descriptors": true,
+        "named_fields": true,
+        "valid_mask": true
+      }
+    },
+    {
+      "topic": "/utlidar/cloud_deskewed",
+      "bag_msg_index": 1231,
+      "file": "/mnt/d/glass-research/acsar_e_m1/exports/l1_deskewed/scan_1231_late_steady.npz",
+      "pass": true,
+      "raw_point_bytes_match": false,
+      "tests": {
+        "bag_timestamp": true,
+        "header_timestamp": true,
+        "frame": true,
+        "dimensions": true,
+        "point_step": true,
+        "is_dense": true,
+        "row_layout": true,
+        "field_descriptors": true,
+        "named_fields": true,
+        "valid_mask": true
+      }
+    },
+    {
+      "topic": "/utlidar/cloud_deskewed",
+      "bag_msg_index": 1232,
+      "file": "/mnt/d/glass-research/acsar_e_m1/exports/l1_deskewed/scan_1232_late_steady.npz",
+      "pass": true,
+      "raw_point_bytes_match": false,
+      "tests": {
+        "bag_timestamp": true,
+        "header_timestamp": true,
+        "frame": true,
+        "dimensions": true,
+        "point_step": true,
+        "is_dense": true,
+        "row_layout": true,
+        "field_descriptors": true,
+        "named_fields": true,
+        "valid_mask": true
+      }
+    },
+    {
+      "topic": "/lidar_points",
+      "bag_msg_index": 0,
+      "file": "/mnt/d/glass-research/acsar_e_m1/exports/hesai/scan_0000_early.npz",
+      "pass": true,
+      "raw_point_bytes_match": true,
+      "tests": {
+        "bag_timestamp": true,
+        "header_timestamp": true,
+        "frame": true,
+        "dimensions": true,
+        "point_step": true,
+        "is_dense": true,
+        "row_layout": true,
+        "field_descriptors": true,
+        "named_fields": true,
+        "valid_mask": true
+      }
+    },
+    {
+      "topic": "/lidar_points",
+      "bag_msg_index": 1,
+      "file": "/mnt/d/glass-research/acsar_e_m1/exports/hesai/scan_0001_early.npz",
+      "pass": true,
+      "raw_point_bytes_match": true,
+      "tests": {
+        "bag_timestamp": true,
+        "header_timestamp": true,
+        "frame": true,
+        "dimensions": true,
+        "point_step": true,
+        "is_dense": true,
+        "row_layout": true,
+        "field_descriptors": true,
+        "named_fields": true,
+        "valid_mask": true
+      }
+    },
+    {
+      "topic": "/lidar_points",
+      "bag_msg_index": 404,
+      "file": "/mnt/d/glass-research/acsar_e_m1/exports/hesai/scan_0404_mid_steady.npz",
+      "pass": true,
+      "raw_point_bytes_match": true,
+      "tests": {
+        "bag_timestamp": true,
+        "header_timestamp": true,
+        "frame": true,
+        "dimensions": true,
+        "point_step": true,
+        "is_dense": true,
+        "row_layout": true,
+        "field_descriptors": true,
+        "named_fields": true,
+        "valid_mask": true
+      }
+    },
+    {
+      "topic": "/lidar_points",
+      "bag_msg_index": 405,
+      "file": "/mnt/d/glass-research/acsar_e_m1/exports/hesai/scan_0405_mid_steady.npz",
+      "pass": true,
+      "raw_point_bytes_match": true,
+      "tests": {
+        "bag_timestamp": true,
+        "header_timestamp": true,
+        "frame": true,
+        "dimensions": true,
+        "point_step": true,
+        "is_dense": true,
+        "row_layout": true,
+        "field_descriptors": true,
+        "named_fields": true,
+        "valid_mask": true
+      }
+    },
+    {
+      "topic": "/lidar_points",
+      "bag_msg_index": 807,
+      "file": "/mnt/d/glass-research/acsar_e_m1/exports/hesai/scan_0807_late_steady.npz",
+      "pass": true,
+      "raw_point_bytes_match": true,
+      "tests": {
+        "bag_timestamp": true,
+        "header_timestamp": true,
+        "frame": true,
+        "dimensions": true,
+        "point_step": true,
+        "is_dense": true,
+        "row_layout": true,
+        "field_descriptors": true,
+        "named_fields": true,
+        "valid_mask": true
+      }
+    },
+    {
+      "topic": "/lidar_points",
+      "bag_msg_index": 808,
+      "file": "/mnt/d/glass-research/acsar_e_m1/exports/hesai/scan_0808_late_steady.npz",
+      "pass": true,
+      "raw_point_bytes_match": true,
+      "tests": {
+        "bag_timestamp": true,
+        "header_timestamp": true,
+        "frame": true,
+        "dimensions": true,
+        "point_step": true,
+        "is_dense": true,
+        "row_layout": true,
+        "field_descriptors": true,
+        "named_fields": true,
+        "valid_mask": true
+      }
+    }
+  ],
+  "gait": [
+    {
+      "topic": "/lowstate",
+      "source_messages": 40015,
+      "export_messages": 40015,
+      "mismatch_counts": {},
+      "pass": true
+    },
+    {
+      "topic": "/sportmodestate",
+      "source_messages": 23785,
+      "export_messages": 23785,
+      "mismatch_counts": {},
+      "pass": true
+    }
+  ],
+  "failures": []
+}

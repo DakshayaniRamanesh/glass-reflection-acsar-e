@@ -1,28 +1,28 @@
-calibration_status: PRELIMINARY
+calibration_status: PRELIMINARY (NOT RESEARCH-READY)
 child_frame: hesai_lidar
-geometric_degeneracy_notes: Indoor corridor geometry lacks orthogonal vertical planes
-  along corridor axis. Translation along the corridor corridor heading exhibits weak
-  observability. Residual is ~4.5-5.5 cm in cross-track/vertical but unconstrained
-  along along-track axis.
-inlier_ratio: 0.07682399647110719
+investigation_findings:
+  degeneracy_caveat: The test corridor environment lacks orthogonal reference planes
+    along the hallway heading. While vertical and cross-track alignment are constrained,
+    along-track translation remains weakly observable. Target-based calibration with
+    multi-planar corner reflectors is required.
+  double_applied_yaw_bug: 'The Hesai driver already applied +90 deg yaw rotation (transform_flag:
+    true). Earlier calibration scripts mistakenly assumed Hesai was still unrotated
+    and applied another -90 deg yaw, forcing cross-track features to match along-track
+    features.'
+  inlier_ratio_explanation: The 7.7% inlier count in earlier reports was caused by
+    comparing a 360-degree surround Hesai cloud (56,700 points) against a single non-repetitive
+    L1 sub-scan packet containing only 503 points.
+  refined_forward_icp:
+    estimated_rpy_deg:
+    - -9.41
+    - -2.73
+    - -11.07
+    estimated_translation_m:
+    - -0.0968
+    - -0.0415
+    - 0.1358
+    inlier_rmse_cm: 2.75
+    method: Accumulated stationary scans (18,577 L1 points vs 12,833 Hesai points)
+    validation_rmse_cm: 5.92
+m3_fusion_readiness: NOT READY for validated dual-LiDAR fusion.
 parent_frame: utlidar_lidar
-residual_rmse_m: 0.07203142101739612
-transform:
-  euler_rpy_deg:
-  - 2.4187950894062467
-  - -23.14564766620786
-  - -90.11304240632887
-  rotation_matrix:
-  - - -0.0018141545779349053
-    - 0.9991398242740731
-    - -0.04142849735076321
-  - - -0.9195068400105746
-    - 0.014617647267066757
-    - 0.3928021073799661
-  - - 0.3930698157031831
-    - 0.038806390426712724
-    - 0.9186893838752656
-  translation:
-    x: -0.1681211172605453
-    y: -0.06633676466704425
-    z: 0.0572235199635579

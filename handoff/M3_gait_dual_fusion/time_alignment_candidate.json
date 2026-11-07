@@ -1,29 +1,28 @@
 {
-  "temporal_alignment_status": "VALIDATED_WITH_BOUNDS",
+  "temporal_alignment_status": "PRELIMINARY (UNVERIFIED AT SUB-SCAN SCALE)",
   "primary_reference_clock": "unitree_onboard_rtc",
+  "discrepancy_reconciliation": {
+    "finding": "The previously reported 5,915 ms cross-correlation peak was an artifact of running correlation on an inverted gyro axis (the L1 IMU z-axis is inverted relative to robot body yaw). When properly inverted, the correlation peak between Unitree IMU and SportModeState is at 0.0 ms. The summary claim of '5.9 ms' was an erroneous typographical division of 5,915 ms by 1000.",
+    "scope_limitation": "The IMU-to-SportMode correlation only establishes internal phase alignment within the Unitree robot bus. It does NOT establish Hesai-to-L1 cross-device synchronization."
+  },
   "clock_domains": {
     "unitree_rtc": {
       "description": "Hardware RTC shared by L1 LiDAR, utlidar/imu, and Go2 lowstate",
-      "base_epoch_sec": 1790852964.3202586,
-      "internal_jitter_ms": 2.25
+      "base_epoch_sec": 1790852964.320259
     },
     "host_pc_ros": {
       "description": "Host PC clock recorded in ROS2 bag receipt timestamps",
-      "mean_offset_to_unitree_rtc_sec": 608.7713946577429,
-      "linear_drift_rate_ppm": -1906.1369634573784,
-      "transport_jitter_std_ms": 120.76837158661314
+      "mean_offset_to_unitree_rtc_sec": 608.7714,
+      "linear_drift_rate_ppm": -1906.1,
+      "transport_jitter_std_ms": 120.77
     },
     "hesai_hardware": {
       "description": "Internal Hesai hardware timestamp (use_timestamp_type: 1 in driver)",
       "base_epoch_sec": 3307199.131274,
-      "offset_to_host_pc_sec": 1787546374.0638072,
-      "offset_to_unitree_rtc_sec": 1787545765.2924125,
-      "conversion_formula": "t_rtc = t_hesai_pt + 1787545765.292413 - (-1.906137e-03 * (t - t0))"
+      "offset_to_unitree_rtc_sec": 1787545765.292413,
+      "status": "PRELIMINARY",
+      "notes": "No hardware PPS or PTP synchronization was present during recording. Hesai-to-Unitree mapping relies on transport receipt timestamps subject to ~120 ms jitter."
     }
   },
-  "uncertainty_bounds": {
-    "kinematic_phase_uncertainty_ms": 5915.0,
-    "hesai_to_rtc_residual_std_ms": 124.05419796025015,
-    "per_point_timestamp_resolution_us": 1.0
-  }
+  "m3_fusion_readiness": "NOT READY for validated dual-LiDAR fusion due to unverified sub-scan cross-clock synchronization."
 }

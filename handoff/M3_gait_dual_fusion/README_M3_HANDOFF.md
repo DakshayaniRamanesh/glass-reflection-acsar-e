@@ -1,19 +1,24 @@
-# ACSAR-E M1 -> M3 Handoff Package: Gait Dynamics & Dual-LiDAR Fusion
+# ACSAR-E M1 -> M3 Handoff: Gait Dynamics & Dual-LiDAR Fusion
 
-## Status:
-- **Leg Kinematics & Ground Contact Dynamics:** **READY**
-  - Full-rate 451.6 Hz `/lowstate` telemetry: 12 motor joint positions, velocities, torques, and 4 foot contact forces.
-  - Body odometry at 268.7 Hz from `/sportmodestate`.
-- **Temporal Synchronization:** **VALIDATED_WITH_BOUNDS**
-  - Precise piecewise-linear conversion between Hesai hardware clock and Unitree RTC clock.
-  - Angular velocity cross-correlation demonstrates sub-10ms bus phase locking.
-- **Spatial Dual-LiDAR Extrinsics:** **PRELIMINARY**
-  - Transform estimate: `t = [-0.1736, -0.0579, 0.0524] m`, `RPY = [2.69°, -23.87°, -90.27°]`.
-  - Independent validation RMSE = 7.20 cm. Designated PRELIMINARY due to along-track corridor degeneracy.
+## Milestone Status:
+- **Gait Dynamics & Leg Kinematics:** **READY for gait feature extraction.**
+- **Dual-LiDAR Fusion:** **NOT READY for validated dual-LiDAR fusion.**
 
-## Included Artifacts:
-1. `sportmode_validated.npz` (in `exports/`): 23,785 body odometry frames.
-2. `lowstate_validated.npz` (in `exports/`): 40,015 full leg telemetry frames.
-3. `gait_validation_report.md`: Complete statistical audit and gait phase visualizations.
-4. `time_alignment_candidate.json`: Mathematical clock conversion formulas.
-5. `hesai_to_l1_candidate.yaml`: Candidate spatial transform with covariance notes.
+## What is READY for M3:
+1. **Authoritative Locomotion Exports:**
+   - `exports/sportmode_validated.npz` (23,785 frames, 268.7 Hz): Body odometry, velocity up to 1.95 m/s, body height (0.072m sitting to 0.338m standing), roll/pitch/yaw.
+   - `exports/lowstate_validated.npz` (40,015 frames, 451.6 Hz): 12 motor joint positions ($q$), velocities ($dq$ up to 14.1 rad/s), and torques ($	au_{\text{est}}$ up to 26.4 Nm).
+   - 4-leg foot contact forces (`foot_force`): active across all 40,015 frames (1 to 211 raw sensor counts).
+   - LowState 1.0 ms hardware tick counter (`tick`) preserved for microsecond gait phase timing.
+2. **Gait Phase Awareness:**
+   - Clear diagonal stance/swing alternations (FR+RL vs FL+RR) at ~2.5–3.5 Hz stepping frequency.
+
+## What is NOT READY for M3 (Dual-LiDAR Fusion):
+1. **Spatial Extrinsic Calibration:**
+   - Estimated extrinsic transform: $\mathbf{t} = [-0.0968, -0.0415, 0.1358]\text{ m}$, $\text{RPY} = [-9.41^\circ, -2.73^\circ, -11.07^\circ]$.
+   - Validation RMSE is 5.92 cm (2.75 cm inlier residual).
+   - Along-track corridor translation is weakly observable due to lack of orthogonal reference planes.
+2. **Temporal Synchronization:**
+   - No hardware PPS or PTP clock sync was active between Hesai and Unitree RTC during recording.
+   - Cross-device temporal alignment relies on transport receipt timestamps subject to ~120 ms jitter.
+   - **M3 fusion must not claim millimeter or microsecond dual-LiDAR registration** without target-based and hardware-synchronized recordings.
